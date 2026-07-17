@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Read Aloud — Lessac High Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <noscript>
+      <section class="noscript-banner" role="alert">
+        <strong>JavaScript is turned off in this browser.</strong>
+        <p>Read Aloud runs entirely on this computer — no internet is used and nothing is uploaded —
+        but the offline voice engine needs JavaScript to run.</p>
+        <p>If you use NoScript or a script blocker, allow scripts for <code>127.0.0.1</code> and
+        <code>localhost</code> only; there are no third-party scripts on this page.
+        Otherwise, enable JavaScript in your browser settings, then reload this page.</p>
+      </section>
+    </noscript>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PRIVATE · OFFLINE · LESSAC HIGH VOICE</p>
+        <h1>Read Aloud</h1>
+        <p class="subtitle">Paste your draft, place the cursor, then press <kbd>F8</kbd> to listen from there.</p>
+      </div>
+      <div class="status-card" aria-live="polite">
+        <span id="statusDot" class="dot loading"></span>
+        <div>
+          <strong id="statusTitle">Loading voice…</strong>
+          <span id="statusDetail">The first launch can take several seconds.</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="editor-card">
+      <label for="draft">Your draft</label>
+      <div class="editor-stack">
+        <div id="backdrop" aria-hidden="true"><div id="backdropContent" class="backdrop-content"></div></div>
+        <textarea id="draft" spellcheck="true" autofocus placeholder="Paste text here. Press F8 to read aloud from the cursor."></textarea>
+      </div>
+      <div class="selection-row">
+        <span id="selectionInfo">F8 reads aloud from the cursor to the end. Esc stops.</span>
+        <button id="clearButton" class="quiet" type="button">Clear</button>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Read aloud controls">
+      <button id="readButton" class="primary" type="button" disabled>
+        <span aria-hidden="true">▶</span> Read
+      </button>
+      <button id="stopButton" type="button" disabled>
+        <span aria-hidden="true">■</span> Stop
+      </button>
+      <label class="speed-control" for="speed">
+        Speed
+        <input id="speed" type="range" min="0.65" max="1.45" step="0.05" value="1">
+        <output id="speedValue" for="speed">1.00×</output>
+      </label>
+    </section>
+
+    <section class="narration" aria-label="Narration and WAV export">
+      <div class="narration-text">
+        <strong>Narration</strong>
+        <span id="narrationInfo">Paste text, render it once, then export a WAV. Edits only re-render changed sentences.</span>
+      </div>
+      <div class="narration-buttons">
+        <button id="renderButton" type="button" disabled>
+          <span aria-hidden="true">⟳</span> Render / Update
+        </button>
+        <button id="exportButton" type="button" disabled>
+          <span aria-hidden="true">⤓</span> Export WAV
+        </button>
+      </div>
+    </section>
+
+    <section class="privacy-note">
+      <strong>No internet is used.</strong>
+      Text stays in this browser tab. Rendered audio is kept in this tab's memory for replay and export; nothing is uploaded, and a WAV file is written only when you choose Export.
+    </section>
+
+    <details class="help">
+      <summary>Keyboard and troubleshooting</summary>
+      <p><kbd>F8</kbd> reads aloud from the cursor to the end of the draft, highlighting each sentence as it is spoken. The next sentence is prepared while the current one plays, so reading is continuous. With text selected, <kbd>F8</kbd> reads only the selection. <kbd>Esc</kbd> stops, and pressing <kbd>F8</kbd> again resumes from the stopped sentence. Editing the text stops playback.</p>
+      <p><strong>Render / Update</strong> synthesizes every sentence of the draft into memory, and <strong>Export WAV</strong> stitches them into one audio file with natural pauses. After editing, Render / Update re-records only the sentences that changed; everything else is reused instantly. Changing the speed re-renders everything, since it produces different audio.</p>
+      <p>Do not open <code>shared/index.html</code> directly. Close this page and use the matching <code>START</code> launcher in the parent folder. Keep the <code>shared</code> folder beside the launcher.</p>
+    </details>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

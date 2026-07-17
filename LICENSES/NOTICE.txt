@@ -1,0 +1,16 @@
+Read Aloud Portable - third-party notices
+
+This builder downloads and builds components from sherpa-onnx and the Piper
+Lessac High voice. Review and preserve the license files shipped by those upstream
+projects before redistributing a completed bundle.
+
+Expected upstream components:
+- sherpa-onnx: Apache License 2.0
+- ONNX Runtime and transitive dependencies: licenses supplied upstream
+- eSpeak NG data/runtime: GPLv3+ and related notices supplied upstream
+- Piper voice model en_US-lessac-high: model card/license from piper-voices
+
+The completed build script intentionally leaves upstream generated files intact
+and places this notice in the USB bundle. For public distribution, copy the
+exact license files from the pinned sherpa source and model archive into this
+folder as part of your release review.

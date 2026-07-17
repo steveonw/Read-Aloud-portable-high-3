@@ -1,0 +1,6 @@
+READ ALOUD PORTABLE — LESSAC HIGH EDITION
+
+Voice: en_US-lessac-high
+Sherpa model: vits-piper-en_US-lessac-high
+Sample rate: 22050 Hz
+Build output: ReadAloudUSB-Lessac-High.zip
